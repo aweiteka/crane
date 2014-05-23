@@ -13,6 +13,7 @@ class TestLoadFromFile(unittest.TestCase):
 
         self.assertEqual(repo_id, 'redhat/foo')
         self.assertEqual(repo_tuple.url, 'http://cdn.redhat.com/foo/bar/images/')
+        self.assertEqual(repo_tuple.url_path, '/foo/bar/images/')
 
         images = json.loads(repo_tuple.images_json)
         self.assertTrue({'id': 'abc123'} in images)
@@ -84,4 +85,3 @@ class TestLoadAll(unittest.TestCase):
 
         # make sure an error was logged
         self.assertEqual(mock_error.call_count, 1)
-
