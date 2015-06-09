@@ -1,3 +1,7 @@
 RewriteEngine on
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+AuthType Basic
+AuthName "Authentication Required"
+AuthUserFile ${OPENSHIFT_DATA_DIR}/.htpasswd
+Require valid-user
